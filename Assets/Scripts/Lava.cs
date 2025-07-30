@@ -7,7 +7,7 @@ public class Lava : MonoBehaviour
 {
 
     [SerializeField] private float moveSpeed = 0.5f;
-    public float timePassed;
+    [SerializeField] private float timePassed;
     public TextMeshProUGUI TimerText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,11 +19,7 @@ public class Lava : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timePassed += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(timePassed / 60);
-        int seconds = Mathf.FloorToInt(timePassed % 60);
-        TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
+        Timer();
         MoveLava();
     }
 
@@ -33,10 +29,17 @@ public class Lava : MonoBehaviour
         {
             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
         }
-        
-        if (timePassed >=30)
+        if (timePassed >= 60)
         {
             transform.Translate(Vector2.up * (moveSpeed + 0.1f) * Time.deltaTime);
         }
+    }
+
+    public void Timer()
+    {
+        timePassed += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(timePassed / 60);
+        int seconds = Mathf.FloorToInt(timePassed % 60);
+        TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

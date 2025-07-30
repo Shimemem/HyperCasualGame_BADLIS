@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float Magnitude, playerSpeed;
-    public int Score;
+    [SerializeField] private float Magnitude, playerSpeed;
+    [SerializeField] private int Score;
     public TextMeshProUGUI ScoreText;
     public GameObject LavaPos;
-    public float playerCollision = 1f;
+    [SerializeField] private float playerCollision = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
