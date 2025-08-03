@@ -6,7 +6,7 @@ using TMPro;
 public class Lava : MonoBehaviour
 {
 
-    [SerializeField] private float moveSpeed = 0.5f;
+    private float moveSpeed = .35f;
     [SerializeField] private float timePassed;
     public TextMeshProUGUI TimerText;
 
@@ -25,13 +25,13 @@ public class Lava : MonoBehaviour
 
     public void MoveLava()
     {
-        if (timePassed < 30)
+        if (timePassed < 60)
         {
             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
         }
         if (timePassed >= 60)
         {
-            transform.Translate(Vector2.up * (moveSpeed + 0.1f) * Time.deltaTime);
+            transform.Translate(Vector2.up * (moveSpeed + 0.15f) * Time.deltaTime);
         }
     }
 
